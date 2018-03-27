@@ -1,8 +1,11 @@
 package pl.sda.patient_registration_app.bo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.sda.patient_registration_app.dto.DoctorDto;
+import pl.sda.patient_registration_app.dto.NewDoctorDto;
 import pl.sda.patient_registration_app.entity.Doctor;
 import pl.sda.patient_registration_app.repository.DoctorsRepository;
 import pl.sda.patient_registration_app.repository.PatientsRepository;
@@ -16,12 +19,15 @@ public class DoctorsService {
     private VisitsRepository visitsRepository;
     private PatientsRepository patientsRepository;
     private DoctorsRepository doctorsRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public DoctorsService(VisitsRepository visitsRepository, PatientsRepository patientsRepository, DoctorsRepository doctorsRepository) {
+    public DoctorsService(VisitsRepository visitsRepository, PatientsRepository patientsRepository,
+                          DoctorsRepository doctorsRepository, PasswordEncoder passwordEncoder) {
         this.visitsRepository = visitsRepository;
         this.patientsRepository = patientsRepository;
         this.doctorsRepository = doctorsRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     private void addDoctor(String firstName, String lastName, DocSpecType docSpecType) {
@@ -45,13 +51,16 @@ public class DoctorsService {
     }
 
 
-    public void addDoctor(DoctorDto doctorDto) {
+    @Transactional
+    public Doctor addDoctor(NewDoctorDto newDoctorDto) {
         Doctor doctor = new Doctor();
-        doctor.setFirstName(doctorDto.getName());
-        doctor.setLastName(doctorDto.getLastName());
-        doctor.setSpecialization(doctorDto.getSpecialization());
-        doctor.setLogin(doctorDto.getLogin());
-        doctor.setPassword(doctorDto.getPassword());
+        doctor.setFirstName(newDoctorDto.getName());
+        doctor.setLastName(newDoctorDto.getLastName());
+        doctor.setSpecialization(newDoctorDto.getSpecialization());
+        doctor.setLogin(newDoctorDto.getLogin());
+        doctor.setPassword(passwordEncoder.encode(newDoctorDto.getPassword()));
+        doctor.setEmail(newDoctorDto.getEmail());
         doctorsRepository.save(doctor);
+        return doctor;
     }
 }

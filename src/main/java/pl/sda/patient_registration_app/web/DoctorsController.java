@@ -3,14 +3,19 @@ package pl.sda.patient_registration_app.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import pl.sda.patient_registration_app.bo.*;
-import pl.sda.patient_registration_app.dto.DoctorDto;
+import pl.sda.patient_registration_app.dto.NewDoctorDto;
+import pl.sda.patient_registration_app.entity.Doctor;
 import pl.sda.patient_registration_app.type.DocSpecType;
+
+import javax.validation.Valid;
 
 @Controller
 public class DoctorsController {
@@ -42,19 +47,33 @@ public class DoctorsController {
 
     @GetMapping("/dodajLekarza")
     public String addDoctorPage(Model model) {
-        model.addAttribute("newDoctor", new DoctorDto());
+        model.addAttribute("newDoctor", new NewDoctorDto());
         model.addAttribute("docSpecEnum", utilsService.convertSpecEnum());
         return "dodawanieLekarza";
     }
 
     @PostMapping("/dodajLekarza")
-    public ModelAndView addDoctorToDB(@ModelAttribute("newDoctor") DoctorDto doctorDto,
+    public ModelAndView addDoctorToDB(@ModelAttribute("newDoctor") @Valid NewDoctorDto newDoctorDto,
+                                      BindingResult result,
+                                      Errors errors,
                                       @RequestParam("specType") String specType) {
-        DocSpecType docSpecType = DocSpecType.findByName(specType);
-        doctorDto.setSpecialization(docSpecType);
-        doctorsService.addDoctor(doctorDto);
+
+        Doctor registered = null;
+
         ModelAndView mav = new ModelAndView("dodawanieLekarzaWynik");
-        mav.addObject("addedDoctor", doctorsFinder.findByLogin(doctorDto.getLogin()));
-        return mav;
+        if (!result.hasErrors()) {
+            DocSpecType docSpecType = DocSpecType.findByName(specType);
+            newDoctorDto.setSpecialization(docSpecType);
+            registered = doctorsService.addDoctor(newDoctorDto);
+            mav.addObject("addedDoctor", doctorsFinder.findByLogin(newDoctorDto.getLogin()));
+        }
+        if (registered == null) {
+            result.rejectValue("email", "message.regError");
+        }
+        if (result.hasErrors()) {
+            return new ModelAndView("bladRejestracji");
+        } else {
+            return mav;
+        }
     }
 }
