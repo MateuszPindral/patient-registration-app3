@@ -25,7 +25,7 @@
 </div>
 <div class="page-text">
     <%--Część odpowiedzialna za wyświetlanie treści strony--%>
-        Lista lekarzy:
+    <h3>Lista lekarzy:</h3>
 
         <ol class="a">
             <c:forEach items="${doctors}" var="doctor">

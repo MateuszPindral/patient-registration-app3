@@ -25,6 +25,8 @@
 </div>
 <div class="page-text">
     <%--Część odpowiedzialna za wyświetlanie treści strony--%>
+    <h3>Historia wizyt:</h3>
+
         <ul class="b">
             <c:forEach items="${wizyty}" var="wizyta">
                 <li class="b">${wizyta.dayOfVisit},
