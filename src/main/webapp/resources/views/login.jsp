@@ -28,20 +28,21 @@
         <c:url value="/login" var="loginUrl"/>
         <form action="${loginUrl}" method="post">
             <c:if test="${param.error != null}">
-                <p>
+                <h2>
                     Nieprawidłowy Login lub Hasło!!<br>
                     Spróbuj ponownie..
-                </p>
+                </h2>
             </c:if>
             <c:if test="${param.logout != null}">
-                <p>
-                    Wylogowanie przebiegło pomyślnie
-                </p>
+
+                    <h2>Wylogowanie przebiegło pomyślnie</h2>
+
             </c:if>
             <p>
                 <label for="username">Login</label>
                 <input type="text" id="username" name="username"/>
             </p>
+            <br>
             <p>
                 <label for="password">Hasło</label>
                 <input type="password" id="password" name="password"/>
