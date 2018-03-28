@@ -63,7 +63,8 @@ li.b {
     margin: 10px;
 
 }
-#overflowTable{
+
+#overflowTable {
     padding: 15px;
     width: 100%;
     overflow: scroll;
@@ -117,12 +118,12 @@ div.a {
     padding: 20px;
 }
 
-.page-header {
+.page-header h1 {
     display: grid;
     grid-template-columns: auto;
     background-color: #45a049;
     margin-top: 0;
-    padding: 5px 5px 5px 60px;
+    padding: 5px 5px 5px 5px;
     text-align: center;
     font-size: 30px;
     color: white;
@@ -145,7 +146,7 @@ div.a {
     grid-template-columns: auto;
     background-color: #45a049;
     margin-top: 0;
-    padding: 5px 5px 5px 20px;
+    padding: 5px 5px 5px 5px;
     text-align: center;
 
     color: white;
