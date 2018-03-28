@@ -26,7 +26,7 @@
     <div class="page-text">
         <%--Część odpowiedzialna za wyświetlanie treści strony--%>
         <h2>Dodaj nowego lekarza:</h2>
-
+        <br>
         <p>
             <form:form action="dodajLekarza" method="post" modelAttribute="newDoctor">
                 <label>Imię:</label><br>

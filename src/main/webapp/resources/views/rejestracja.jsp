@@ -22,6 +22,7 @@
     <jsp:include page="menu.jsp"/>
     <div class="page-text">
         <h3>Wybierz specjalizację z poniższej listy:</h3>
+        <br>
         <div class="a">
             <form action="rejestracja/specjalista" method="get">
                 <label>Specjalizacja:</label>

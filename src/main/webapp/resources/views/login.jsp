@@ -38,6 +38,7 @@
                     <h2>Wylogowanie przebiegło pomyślnie</h2>
 
             </c:if>
+            <br><br>
             <p>
                 <label for="username">Login</label>
                 <input type="text" id="username" name="username"/>
