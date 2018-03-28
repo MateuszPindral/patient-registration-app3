@@ -13,35 +13,50 @@
     <title>Dodawanie lekarza</title>
     <link href="${pageContext.servletContext.contextPath}/resources/css/app.css" rel="stylesheet">
 </head>
-</head>
 <body>
-<jsp:include page="menu.jsp"/>
-<p>
-    Dodaj nowego lekarza:
-</p>
-<p>
-    <form:form action="dodajLekarza" method="post" modelAttribute="newDoctor">
-        <label>Imię:</label><br>
-        <form:input type="text" path="name"/><br>
+<div id="wrapper">
+    <div class="page-header">
+        <%--Header strony--%>
+        <h1>TwojeZdrowie</h1>
+    </div>
 
-        <label>Nazwisko:</label><br>
-        <form:input type="text" path="lastName"/><br>
+    <div class="page-menu">
+        <jsp:include page="menu.jsp"/>
+    </div>
+    <div class="page-text">
+        <%--Część odpowiedzialna za wyświetlanie treści strony--%>
+        <h2>Dodaj nowego lekarza:</h2>
 
-        <label>Specjalizacjca:</label><br>
-        <select title="specialization" name="specType">
-            <c:forEach items="${docSpecEnum}" var="spec">
-                <option value="${spec}">${spec}</option>
-            </c:forEach>
-        </select><br>
+        <p>
+            <form:form action="dodajLekarza" method="post" modelAttribute="newDoctor">
+                <label>Imię:</label><br>
+                <form:input type="text" path="name"/><br>
 
-        <label>Login:</label><br>
-        <form:input path="login"/><br>
+                <label>Nazwisko:</label><br>
+                <form:input type="text" path="lastName"/><br>
 
-        <label>Hasło:</label><br>
-        <form:input type="password" path="password"/><br>
-        <input type="submit" value="Zatwierdź"><br>
+                <label>Specjalizacjca:</label><br>
+                <select title="specialization" name="specType">
+                    <c:forEach items="${docSpecEnum}" var="spec">
+                        <option value="${spec}">${spec}</option>
+                    </c:forEach>
+                </select><br>
 
-    </form:form>
-</p>
+                <label>Login:</label><br>
+                <form:input path="login"/><br>
+
+                <label>Hasło:</label><br>
+                <form:input type="password" path="password"/><br>
+                <input type="submit" value="Zatwierdź"><br>
+
+            </form:form>
+        </p>
+    </div>
+
+    <div class="page-footer">
+        <%--stopka--%>
+        <footer>Copyright © 2018 Design GangOfThree</footer>
+    </div>
+</div>
 </body>
 </html>

@@ -13,24 +13,24 @@
 
 </head>
 <body>
+<div id="wrapper">
+    <div class="page-header">
+        <%--Header strony--%>
+        <h1>TwojeZdrowie</h1>
+    </div>
 
-<div class="page-header">
-    <%--Header strony--%>
-    <h1>TwojeZdrowie</h1>
-</div>
-
-<div class="page-menu">
-    <jsp:include page="menu.jsp"/>
-</div>
-<div class="page-text">
-    <%--Część odpowiedzialna za wyświetlanie treści strony--%>
+    <div class="page-menu">
+        <jsp:include page="menu.jsp"/>
+    </div>
+    <div class="page-text">
+        <%--Część odpowiedzialna za wyświetlanie treści strony--%>
         Idz pan panie z takim tym.
-</div>
+    </div>
 
-<div class="page-footer">
-    <%--stopka--%>
-    <footer>Copyright © 2018 Design GangOfThree</footer>
+    <div class="page-footer">
+        <%--stopka--%>
+        <footer>Copyright © 2018 Design GangOfThree</footer>
+    </div>
 </div>
-
 </body>
 </html>

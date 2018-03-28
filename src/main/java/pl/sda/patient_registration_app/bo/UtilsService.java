@@ -80,13 +80,13 @@ public class UtilsService {
         return patient;
     }
 
-    public Patient mapNewPatientRegistrationDtoToPatient(NewPatientRegistrationDto newPatientRegistrationDto) {
+    public Patient mapNewPatientRegistrationDtoToPatient(NewUserRegistrationDto newUserRegistrationDto) {
 
         Patient patient = new Patient();
-        patient.setFirstName(newPatientRegistrationDto.getFirstName());
-        patient.setLastName(newPatientRegistrationDto.getLastName());
-        patient.setLogin(newPatientRegistrationDto.getLogin());
-        patient.setPassword(passwordEncoder.encode(newPatientRegistrationDto.getPassword()));
+        patient.setFirstName(newUserRegistrationDto.getFirstName());
+        patient.setLastName(newUserRegistrationDto.getLastName());
+        patient.setLogin(newUserRegistrationDto.getLogin());
+        patient.setPassword(passwordEncoder.encode(newUserRegistrationDto.getPassword()));
 
 
         return patient;

@@ -12,20 +12,19 @@
     <title>Logowanie</title>
     <link href="${pageContext.servletContext.contextPath}/resources/css/app.css" rel="stylesheet">
 
-
 </head>
-
 <body>
-<div class="page-header">
-    <%--Header strony--%>
-    <h1>TwojeZdrowie</h1>
-</div>
+<div id="wrapper">
+    <div class="page-header">
+        <%--Header strony--%>
+        <h1>TwojeZdrowie</h1>
+    </div>
 
-<div class="page-menu">
-    <jsp:include page="menu.jsp"/>
-</div>
-<div class="page-text">
-    <%--Część odpowiedzialna za wyświetlanie treści strony--%>
+    <div class="page-menu">
+        <jsp:include page="menu.jsp"/>
+    </div>
+    <div class="page-text">
+        <%--Część odpowiedzialna za wyświetlanie treści strony--%>
         <c:url value="/login" var="loginUrl"/>
         <form action="${loginUrl}" method="post">
             <c:if test="${param.error != null}">
@@ -47,17 +46,15 @@
                 <label for="password">Hasło</label>
                 <input type="password" id="password" name="password"/>
             </p>
-            <input type="hidden"
-                   name="${_csrf.parameterName}"
-                   value="${_csrf.token}"/>
-            <button type="submit" class="btn">Log in</button>
+
+            <input type="submit" value="Zaloguj">
         </form>
-</div>
+    </div>
 
-<div class="page-footer">
-    <%--stopka--%>
-    <footer>Copyright © 2018 Design GangOfThree</footer>
+    <div class="page-footer">
+        <%--stopka--%>
+        <footer>Copyright © 2018 Design GangOfThree</footer>
+    </div>
 </div>
-
 </body>
 </html>

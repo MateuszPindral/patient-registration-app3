@@ -1,3 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+
+}
+
 ul.m {
     list-style-type: none;
     margin: 0;
@@ -147,6 +159,5 @@ div.page-footer {
 
 span {
     display: inline-block;
-
 
 }

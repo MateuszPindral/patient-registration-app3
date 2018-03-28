@@ -14,28 +14,30 @@
     <link href="${pageContext.servletContext.contextPath}/resources/css/app.css" rel="stylesheet">
 </head>
 <body>
-<div class="page-header">
-    <%--Header strony--%>
-    <h1>TwojeZdrowie</h1>
-</div>
-<jsp:include page="menu.jsp"/>
-<div class="page-text">
-    <h3>Wybierz specjalizację z poniższej listy:</h3>
-    <div class="a">
-        <form action="rejestracja/specjalista" method="get">
-            <label>Specjalizacja:</label>
-            <select name="specType">
-                <c:forEach items="${docSpecEnum}" var="spec">
-                    <option value="${spec}">${spec}</option>
-                </c:forEach>
-            </select>
-            <input type="submit" value="wybierz">
-        </form>
+<div id="wrapper">
+    <div class="page-header">
+        <%--Header strony--%>
+        <h1>TwojeZdrowie</h1>
     </div>
-</div>
-<div class="page-footer">
-    <%--stopka--%>
-    <footer>Copyright © 2018 Design GangOfThree</footer>
+    <jsp:include page="menu.jsp"/>
+    <div class="page-text">
+        <h3>Wybierz specjalizację z poniższej listy:</h3>
+        <div class="a">
+            <form action="rejestracja/specjalista" method="get">
+                <label>Specjalizacja:</label>
+                <select name="specType">
+                    <c:forEach items="${docSpecEnum}" var="spec">
+                        <option value="${spec}">${spec}</option>
+                    </c:forEach>
+                </select>
+                <input type="submit" value="wybierz">
+            </form>
+        </div>
+    </div>
+    <div class="page-footer">
+        <%--stopka--%>
+        <footer>Copyright © 2018 Design GangOfThree</footer>
+    </div>
 </div>
 </body>
 </html>
