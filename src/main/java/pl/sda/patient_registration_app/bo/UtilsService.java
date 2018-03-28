@@ -5,13 +5,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.sda.patient_registration_app.config.MyUserDetailsService;
 import pl.sda.patient_registration_app.dto.*;
-import pl.sda.patient_registration_app.entity.Doctor;
-import pl.sda.patient_registration_app.entity.Patient;
-import pl.sda.patient_registration_app.entity.User;
-import pl.sda.patient_registration_app.entity.Visit;
+import pl.sda.patient_registration_app.entity.*;
 import pl.sda.patient_registration_app.type.DocSpecType;
+import pl.sda.patient_registration_app.type.RoleType;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -25,9 +22,6 @@ public class UtilsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
-
-
 
 
     public PatientDto mapPatientToPatientDto(Patient patient) {
@@ -88,14 +82,14 @@ public class UtilsService {
         return patient;
     }
 
-    public Patient mapNewPatientRegistrationDtoToPatient(NewPatientRegistrationDto newPatientRegistrationDto) {
+    public Patient mapNewUserRegistrationDtoToPatient(NewUserRegistrationDto newUserRegistrationDto) {
 
         Patient patient = new Patient();
-        patient.setFirstName(newPatientRegistrationDto.getFirstName());
-        patient.setLastName(newPatientRegistrationDto.getLastName());
-        patient.setLogin(newPatientRegistrationDto.getLogin());
-        patient.setPassword(passwordEncoder.encode(newPatientRegistrationDto.getPassword()));
-
+        patient.setFirstName(newUserRegistrationDto.getFirstName());
+        patient.setLastName(newUserRegistrationDto.getLastName());
+        patient.setLogin(newUserRegistrationDto.getLogin());
+        patient.setPassword(passwordEncoder.encode(newUserRegistrationDto.getPassword()));
+        patient.setRole(RoleType.PATIENT);
 
         return patient;
     }
@@ -126,7 +120,8 @@ public class UtilsService {
         return MyUserPrincipalDto.builder()
                 .login(patient.getLogin())
                 .password(patient.getPassword())
-                .id(patient.getId()).build();
+                .id(patient.getId())
+                .build();
     }
 
     public MyUserPrincipalDto mapDoctorToMyUserPrincipal(Doctor doctor) {
@@ -156,4 +151,28 @@ public class UtilsService {
     }
 
 
+    public Manager mapNewUserRegistrationDtoToManager(NewUserRegistrationDto newUserRegistrationDto) {
+
+        Manager manager = new Manager();
+        manager.setFirstName(newUserRegistrationDto.getFirstName());
+        manager.setLastName(newUserRegistrationDto.getLastName());
+        manager.setLogin(newUserRegistrationDto.getLogin());
+        manager.setEmail(newUserRegistrationDto.getEmail());
+
+        manager.setPassword(passwordEncoder.encode(newUserRegistrationDto.getPassword()));
+        manager.setRole(RoleType.MANAGER);
+
+        return manager;
+    }
+
+    public Admin mapNewUserRegistrationDtoToAdmin(NewUserRegistrationDto newUserRegistrationDto) {
+        Admin admin = new Admin();
+        admin.setFirstName(newUserRegistrationDto.getFirstName());
+        admin.setLastName(newUserRegistrationDto.getLastName());
+        admin.setLogin(newUserRegistrationDto.getLogin());
+        admin.setPassword(passwordEncoder.encode(newUserRegistrationDto.getPassword()));
+        admin.setEmail(newUserRegistrationDto.getEmail());
+        admin.setRole(RoleType.ADMIN);
+        return admin;
+    }
 }

@@ -5,7 +5,8 @@ public enum RoleType {
 
     PATIENT("ROLE_PATIENT"),
     MANAGER("ROLE_MANAGER"),
-    ADMIN("ROLE_ADMIN");
+    ADMIN("ROLE_ADMIN"),
+    DOCTOR("ROLE_DOCTOR");
     private String name;
 
     RoleType(String name) {

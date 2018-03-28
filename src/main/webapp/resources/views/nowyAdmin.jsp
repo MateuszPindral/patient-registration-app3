@@ -2,16 +2,16 @@
 <%--
   Created by IntelliJ IDEA.
   User: Andrzej
-  Date: 3/21/2018
-  Time: 7:55 PM
+  Date: 3/28/2018
+  Time: 6:10 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Rejestracja nowego uzytkownika</title>
+    <title>nowy admin</title>
     <link href="${pageContext.servletContext.contextPath}/resources/css/app.css" rel="stylesheet">
-</head>
+
 </head>
 <body>
 <div class="page-header">
@@ -24,8 +24,8 @@
 </div>
 <div class="page-text">
     <%--Część odpowiedzialna za wyświetlanie treści strony--%>
-    <h2>Dodaj nowe konto.</h2>
-    <form:form action="nowyUzytkownik/zarejestruj" method="post" modelAttribute="newUser">
+    <h2>Dodaj nowego administratora.</h2>
+    <form:form action="nowyAdmin/zarejestruj" method="post" modelAttribute="newUser">
         <label>Imię:</label><br>
         <form:input type="text" path="firstName"/><br>
         <label>Nazwisko:</label><br>
@@ -47,5 +47,6 @@
     <footer>Copyright © 2018 Design GangOfThree</footer>
 </div>
 
+</body>
 </body>
 </html>
