@@ -26,66 +26,66 @@
         <jsp:include page="menu.jsp"/>
     </div>
 
-    <div class="page-text">
+    <div class="page">
         <%--Część odpowiedzialna za wyświetlanie treści strony--%>
         <h2>Harmonogram wizyt</h2>
         <br><br>
         Ten harmonogram dotyczy daty: ${dateOfVisits}, ${weekDayName}
         <br><br>
-
-        <table id="visitTable">
-            <thead>
-            <tr>
-                <td>Lekarz/Godzina</td>
-                <c:forEach items="${hours}" var="hours">
-                    <td> ${hours}
-                    </td>
-                </c:forEach>
-
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${doctorDayDtoList}" var="doctor">
+        <div id="overflowTable">
+            <table id="visitTable">
+                <thead>
                 <tr>
-                    <td>${doctor.doctorDto.name} ${doctor.doctorDto.lastName}
-                    </td>
-
-                    <c:forEach items="${doctor.visits}" var="visit">
-                        <td>
-                            <c:if test="${!visit.status.name.equals(\"Brak\")}">
-                                ${visit.status.name}
-                                <c:if test="${!visit.status.name.equals(\"Zajeta\")}">
-                                    <%--<form action="specjalista" method="post">
-                                        <input type="hidden" name="visit" value="${visit}">
-                                        <input type="submit" value="zarejestruj się">
-                                    </form>--%>
-
-                                    <%--<form action="specjalista" method="post">
-                                        <input type="hidden" name="time" value="${visit.hourOfVisit}">
-                                        <input type="hidden" name="date" value="${visit.dayOfVisit}">
-                                        <input type="hidden" name="doctorId" value="${visit.doctor.id}">
-                                        <input type="submit" value="zarejestruj się">
-                                    </form>--%>
-
-                                    <form:form action="specjalista" modelAttribute="registerDto" method="POST">
-                                        <form:input type="hidden" path="date" value="${visit.dayOfVisit}"/>
-                                        <form:input type="hidden" path="time" value="${visit.hourOfVisit}"/>
-                                        <form:input type="hidden" path="doctorId" value="${visit.doctor.id}"/>
-                                        <input type="submit" name="register" value="zarejestruj się">
-                                    </form:form>
-
-                                    <%--<a href="${pageContext.servletContext.contextPath}/rejestracja/specjalista/${visit.hourOfVisit}/${visit.dayOfVisit}/${visit.doctor.id}">zarejestruj się</a>--%>
-
-                                </c:if>
-                            </c:if>
+                    <td>Lekarz/Godzina</td>
+                    <c:forEach items="${hours}" var="hours">
+                        <td> ${hours}
                         </td>
                     </c:forEach>
 
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                <c:forEach items="${doctorDayDtoList}" var="doctor">
+                    <tr>
+                        <td>${doctor.doctorDto.name} ${doctor.doctorDto.lastName}
+                        </td>
 
+                        <c:forEach items="${doctor.visits}" var="visit">
+                            <td>
+                                <c:if test="${!visit.status.name.equals(\"Brak\")}">
+                                    ${visit.status.name}
+                                    <c:if test="${!visit.status.name.equals(\"Zajeta\")}">
+                                        <%--<form action="specjalista" method="post">
+                                            <input type="hidden" name="visit" value="${visit}">
+                                            <input type="submit" value="zarejestruj się">
+                                        </form>--%>
+
+                                        <%--<form action="specjalista" method="post">
+                                            <input type="hidden" name="time" value="${visit.hourOfVisit}">
+                                            <input type="hidden" name="date" value="${visit.dayOfVisit}">
+                                            <input type="hidden" name="doctorId" value="${visit.doctor.id}">
+                                            <input type="submit" value="zarejestruj się">
+                                        </form>--%>
+
+                                        <form:form action="specjalista" modelAttribute="registerDto" method="POST">
+                                            <form:input type="hidden" path="date" value="${visit.dayOfVisit}"/>
+                                            <form:input type="hidden" path="time" value="${visit.hourOfVisit}"/>
+                                            <form:input type="hidden" path="doctorId" value="${visit.doctor.id}"/>
+                                            <input type="submit" name="register" value="zarejestruj się">
+                                        </form:form>
+
+                                        <%--<a href="${pageContext.servletContext.contextPath}/rejestracja/specjalista/${visit.hourOfVisit}/${visit.dayOfVisit}/${visit.doctor.id}">zarejestruj się</a>--%>
+
+                                    </c:if>
+                                </c:if>
+                            </td>
+                        </c:forEach>
+
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
         <br><br>
 
         <form action="specjalista" method="GET">

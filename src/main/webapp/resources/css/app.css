@@ -63,6 +63,12 @@ li.b {
     margin: 10px;
 
 }
+#overflowTable{
+    padding: 15px;
+    width: 100%;
+    overflow: scroll;
+    border: 1px solid #ddd;
+}
 
 #visitTable {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -71,17 +77,9 @@ li.b {
     width: 100%;
 }
 
-#visitTable td, #visitTable th {
+#visitTable td, th {
     border: 1px solid #ddd;
-    padding: 8px;
-}
-
-#visitTable th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: center;
-    background-color: #4CAF50;
-    color: white;
+    padding: 5px;
 }
 
 #visitTable tr {
@@ -119,26 +117,22 @@ div.a {
     padding: 20px;
 }
 
-div.page-header {
+.page-header {
     display: grid;
     grid-template-columns: auto;
     background-color: #45a049;
     margin-top: 0;
     padding: 5px 5px 5px 60px;
-}
-
-div.page-header h1 {
     text-align: center;
     font-size: 30px;
     color: white;
+}
+
+.page-menu {
 
 }
 
-div.page-menu {
-
-}
-
-div.page-text {
+.page-text {
     display: grid;
     grid-template-columns: auto;
     padding: 100px;
@@ -146,7 +140,7 @@ div.page-text {
 
 }
 
-div.page-footer {
+.page-footer {
     display: grid;
     grid-template-columns: auto;
     background-color: #45a049;
