@@ -24,8 +24,9 @@
 </div>
 <div class="page-text">
     <%--Część odpowiedzialna za wyświetlanie treści strony--%>
+    <h2>Dodaj nowe konto.</h2>
     <form:form action="nowyUzytkownik/zarejestruj" method="post" modelAttribute="newUser">
-        <label>Imie:</label><br>
+        <label>Imię:</label><br>
         <form:input type="text" path="firstName"/><br>
         <label>Nazwisko:</label><br>
         <form:input type="text" path="lastName"/><br>
@@ -33,13 +34,11 @@
         <form:input path="email"/><br>
         <label>Login:</label><br>
         <form:input path="login"/><br>
-
-        <label>Haslo, minimum 7 znakow:</label><br>
+        <label>Hasło(minimum 7 znaków):</label><br>
         <form:input type="password" path="password"/><br>
-        <label>Powtorz haslo:</label><br>
+        <label>Powtórz hasło:</label><br>
         <form:input type="password" path="matchingPassword"/><br>
         <input type="submit" value="Wyślij"><br>
-
     </form:form>
 </div>
 
